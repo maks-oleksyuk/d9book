@@ -26,12 +26,12 @@ jobs:
     permissions: write-all
 
     steps:
-      # - name: 🗑 Delete deployment
-      #   uses: strumwolf/delete-deployment-environment@v2
-      #   with:
-      #     token: ${{ secrets.GITHUB_TOKEN }}
-      #     environment: github-pages
-      #     onlyRemoveDeployments: true
+      - name: 🗑 Delete deployment
+        uses: strumwolf/delete-deployment-environment@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          environment: github-pages
+          onlyRemoveDeployments: true
 
       - name: 🗑 Delete workflow runs
         uses: dmvict/clean-workflow-runs@v1
@@ -82,7 +82,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist
-          name: dist-${{ matrix.node }}
+          name: github-pages-dist-${{ matrix.node }}
 
   deploy:
     name: 🌐 Deploy
@@ -98,4 +98,4 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
         with:
-          artifact_name: dist-18.x
+          artifact_name: github-pages-dist-18.x
