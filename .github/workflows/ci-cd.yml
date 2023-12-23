@@ -42,7 +42,7 @@ jobs:
 
   build:
     name: 🏗️ Build (node - ${{ matrix.node }})
-    # needs: cleanup
+    needs: cleanup
     runs-on: ubuntu-latest
 
     strategy:
@@ -83,6 +83,7 @@ jobs:
         with:
           path: ./dist
           name: github-pages-dist-${{ matrix.node }}
+          compression-level: 9
 
   deploy:
     name: 🌐 Deploy
