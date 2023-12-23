@@ -26,12 +26,12 @@ jobs:
     permissions: write-all
 
     steps:
-      #     - name: 🗑 Delete deployment
-      #       uses: strumwolf/delete-deployment-environment@v2
-      #       with:
-      #         token: ${{ secrets.GITHUB_TOKEN }}
-      #         environment: github-pages
-      #         onlyRemoveDeployments: true
+      # - name: 🗑 Delete deployment
+      #   uses: strumwolf/delete-deployment-environment@v2
+      #   with:
+      #     token: ${{ secrets.GITHUB_TOKEN }}
+      #     environment: github-pages
+      #     onlyRemoveDeployments: true
 
       - name: 🗑 Delete workflow runs
         uses: dmvict/clean-workflow-runs@v1
@@ -42,7 +42,7 @@ jobs:
 
   build:
     name: 🏗️ Build (node - ${{ matrix.node }})
-    needs: cleanup
+    # needs: cleanup
     runs-on: ubuntu-latest
 
     strategy:
