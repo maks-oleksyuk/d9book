@@ -70,7 +70,7 @@ jobs:
         run: pnpm i ${{ env.PNPM_FLAGS }}
 
       - name: ⚡️ Build site with VitePress
-        run: pnpm notes:build
+        run: pnpm book:build
 
       - name: 📤 Upload artifact
         uses: actions/upload-pages-artifact@v3
