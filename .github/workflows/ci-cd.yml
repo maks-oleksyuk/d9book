@@ -40,6 +40,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           environment: github-pages
           onlyRemoveDeployments: true
+        if: github.event_name != 'pull_request'
 
       - name: 🗑 Delete workflow runs
         uses: Mattraks/delete-workflow-runs@v2
@@ -69,7 +70,7 @@ jobs:
         with:
           version: latest
 
-      - name: ⚙️ Setup Node.js ${{ matrix.node }}
+      - name: ❇️ Setup Node.js ${{ matrix.node }}
         uses: actions/setup-node@v4
         timeout-minutes: 5
         with:
@@ -81,7 +82,7 @@ jobs:
           PNPM_FLAGS: --frozen-lockfile --color=always
         run: pnpm i ${{ env.PNPM_FLAGS }}
 
-      - name: 🏗️ Build site with VitePress
+      - name: ⚡️ Build site with VitePress
         run: pnpm book:build
 
       - name: 📤 Upload artifact
